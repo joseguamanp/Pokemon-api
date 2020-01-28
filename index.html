@@ -6,15 +6,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
   <body>
+<div class="container" style="text-align:center;">
+  <img width="50%" src="imagen/logo.png" alt="pokemon">
+</div>
     <div class="container">
       <div  id="app" class="row">
         <div  v-for="t in total" class="col-md-4">
-          <img v-bind:src="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+t.entry_number+'.png'" alt="">
-          <p>#{{t.entry_number}}</p>
-          <h3>{{t.pokemon_species.name}}</h3>
+          <div class="jumbotron">
+            <img v-bind:src="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+t.entry_number+'.png'" alt="">
+            <p>#{{t.entry_number}}</p>
+            <h3>{{t.pokemon_species.name}}</h3>
+          </div>
         </div>
       </div>
-
     </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -30,9 +34,7 @@
       mounted(){
         axios.get("https://pokeapi.co/api/v2/pokedex/2/")
         .then(response =>(
-          //console.log(response.data.pokemon_entries)
           this.total=response.data.pokemon_entries
-          //console.log(response.data.pokemon_entries.pokemon_species)
         ))
       }
     })
