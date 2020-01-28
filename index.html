@@ -37,8 +37,12 @@
           <div class="col-md-7">
             <img width="200px" id="imagenes" src="" alt="">
           </div>
-          <div class="col-md-5">
-
+          <div class="col-md-5" id="description">
+            <div v-for="d in des">
+              <div v-if="d.language.name=='es'">
+                  {{d.flavor_text}}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -73,17 +77,25 @@
       },
       methods:{
         funt_modal: function(id,url){
-          modal_descripcion(url)
-          $('#imagenes').attr('src',this.imagen+id+".png")
-          $('#myModal').modal('show')
+          app2.modal_descripcion(id,url,this.imagen)
         }
       }
     })
-    function modal_descripcion(url) {
-      axios.get("https://pokeapi.co/api/v2/pokedex/2/")
-      .then(response =>(
-        console.log(response)
-      ))
-    }
+    var app2=new Vue({
+      el:"#description",
+      data:{
+        des:null
+      },
+      methods:{
+        modal_descripcion: function(id,url,imagen){
+          $('#imagenes').attr('src',imagen+id+".png")
+          $('#myModal').modal('show')
+          axios.get(url).then(response =>(
+            //console.log(response.data.flavor_text_entries)
+            this.des=response.data.flavor_text_entries
+          ))
+        }
+      }
+    })
   </script>
 </html>
