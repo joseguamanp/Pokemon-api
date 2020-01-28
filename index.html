@@ -9,6 +9,12 @@
     .jumbotron{
       text-align: center;
     }
+    .colores_habilidades{
+      width: 80px;
+      /*color: white;  */
+      text-align: center;
+      border-radius: 7px;
+    }
   </style>
   <body>
 <div class="container" style="text-align:center;">
@@ -39,14 +45,20 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-md-7">
+          <div class="col-md-4">
             <img width="200px" id="imagenes" src="" alt="">
           </div>
-          <div class="col-md-5" id="description">
+          <div class="col-md-8" id="description">
             <div v-for="d in des">
               <div v-if="d.language.name=='es'">
                   {{d.flavor_text}}
               </div>
+            </div>
+            <b>Color:</b>
+            <div class="colores_habilidades" v-bind:style="{ background: colores}">{{colores}}</div>
+            <b>Habilidades</b>
+            <div v-for="h in habilidades">
+              {{h.ability.name}}
             </div>
           </div>
         </div>
