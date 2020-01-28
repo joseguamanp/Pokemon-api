@@ -23,13 +23,12 @@
     <div class="container">
       <div  id="app" class="row">
         <div  v-for="t in total" class="col-md-4">
-          <div class="jumbotron">
-            <a v-on:click="funt_modal(t.entry_number,t.pokemon_species.url)">
-              <img width="180px" v-bind:src="imagen+t.entry_number+'.png'" alt="">
-              <p>#{{t.entry_number}}</p>
-              <h3>{{t.pokemon_species.name}}</h3>
-            </a>
-          </div>
+          <a v-on:click="funt_modal(t.entry_number,t.pokemon_species.url)">
+            <div class="jumbotron">  
+                <img width="180px" v-bind:src="imagen+t.entry_number+'.png'" alt="">
+                <h3>{{t.pokemon_species.name}}</h3>
+            </div>
+          </a>
         </div>
       </div>
     </div>
