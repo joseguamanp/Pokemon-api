@@ -65,42 +65,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script type="text/javascript">
-  //const axios = require('axios');
-    var app=new Vue({
-      el:"#app",
-      data:{
-        total:null,
-        imagen:"https://pokeres.bastionbot.org/images/pokemon/"
-      },
-      mounted(){
-        axios.get("https://pokeapi.co/api/v2/pokedex/2/")
-        .then(response =>(
-          //console.log(response.data.pokemon_entries)
-          this.total=response.data.pokemon_entries
-        ))
-      },
-      methods:{
-        funt_modal: function(id,url){
-          app2.modal_descripcion(id,url,this.imagen)
-        }
-      }
-    })
-    var app2=new Vue({
-      el:"#description",
-      data:{
-        des:null
-      },
-      methods:{
-        modal_descripcion: function(id,url,imagen){
-          $('#imagenes').attr('src',imagen+id+".png")
-          $('#myModal').modal('show')
-          axios.get(url).then(response =>(
-            //console.log(response.data.flavor_text_entries)
-            this.des=response.data.flavor_text_entries
-          ))
-        }
-      }
-    })
-  </script>
+  <script type="text/javascript" src="js/index.js"></script>
 </html>
