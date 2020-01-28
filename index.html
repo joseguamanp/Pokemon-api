@@ -11,20 +11,30 @@
     }
     .colores_habilidades{
       width: 80px;
-      /*color: white;  */
+      color: white;
       text-align: center;
       border-radius: 7px;
+      opacity: 0.7;
     }
   </style>
   <body>
-<div class="container" style="text-align:center;">
-  <img width="50%" src="imagen/logo.png" alt="pokemon">
-</div>
-    <div class="container">
+<div class="container">
+  <div class="row"  style="text-align:center;">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <img width="50%" src="imagen/logo.png" alt="pokemon">
+    </div>
+    <div class="col-md-3"></div>
+  </div><br>
+  <div class="row" id="buscador">
+    <input class="form-control" placeholder="buscar pokemon..." v-model="pokemones">
+    <button class="btn btn-primary" on:click="buscar()">Buscar</button>
+  </div><br>
+    <div class="row">
       <div  id="app" class="row">
         <div  v-for="t in total" class="col-md-4">
           <a v-on:click="funt_modal(t.entry_number,t.pokemon_species.url)">
-            <div class="jumbotron">  
+            <div class="jumbotron">
                 <img width="180px" v-bind:src="imagen+t.entry_number+'.png'" alt="">
                 <h3>{{t.pokemon_species.name}}</h3>
             </div>
@@ -32,6 +42,7 @@
         </div>
       </div>
     </div>
+</div>
 <!-----modal ---->
 <div id="myModal" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
@@ -77,4 +88,9 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript">
+    function function_letras(valor){
+      console.log(valor.value);
+    }
+  </script>
 </html>

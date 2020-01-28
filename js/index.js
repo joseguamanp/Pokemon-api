@@ -7,7 +7,6 @@ var app=new Vue({
   mounted(){
     axios.get("https://pokeapi.co/api/v2/pokedex/2/")
     .then(response =>(
-      //console.log(response.data),
       this.total=response.data.pokemon_entries
     ))
   },
@@ -29,15 +28,28 @@ var app2=new Vue({
       $('#imagenes').attr('src',imagen+id+".png")
       $('#myModal').modal('show')
       axios.get(url).then(response =>(
-        //console.log(response.data),
         this.des=response.data.flavor_text_entries,
         this.colores=response.data.color.name
       ))
       axios.get("https://pokeapi.co/api/v2/pokemon/"+id).then(response =>(
-        //console.log(response.data.),
         this.habilidades=response.data.abilities
       ))
+    }
+  }
+})
 
+
+var buscar=new Vue({
+  el:"#buscador",
+  data:{
+    pokemones:null
+  },
+  methods:{
+    buscar: function(){
+      axios.get("https://pokeapi.co/api/v2/pokemon/"+this.pokemones)
+      .then(response =>(
+        console.log(response)
+      ))
     }
   }
 })
