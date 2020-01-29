@@ -45,10 +45,15 @@ var buscar=new Vue({
     pokemones:null
   },
   methods:{
-    buscar: function(){
-      axios.get("https://pokeapi.co/api/v2/pokemon/"+this.pokemones)
+    addEvent: function({ type, target }){
+      console.log(target.value)
+      axios.get("https://pokeapi.co/api/v2/pokedex/2/")
       .then(response =>(
-        console.log(response)
+        $.each(response.data.pokemon_entries, function( key, value ) {
+          if (value.pokemon_species.name.indexOf(target.value)>=0) {
+              this.pokemones=value
+          }
+        })
       ))
     }
   }
