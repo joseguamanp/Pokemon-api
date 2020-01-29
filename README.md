@@ -1,6 +1,6 @@
 # Pokemon-api
 ![alt text](imagen/logo.png)
 ### Descripción
- Consultar pokemones con vue.js
+ Consultar una lista de pokemones, la herramienta a utilizar es la libreria Vue.js
  
  link https://joseguamanp.github.io/Pokemon-api/index.html
