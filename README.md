@@ -1,5 +1,5 @@
 # Pokemon-api
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/joseguamanp/Pokemon-api/tree/master/imagen/logo.png)
 ###Descripción
  Consultar pokemones con vue.js
  
