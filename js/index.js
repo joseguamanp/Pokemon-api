@@ -29,6 +29,7 @@ var app2=new Vue({
       $('#imagenes').attr('src',imagen+id+".png")
       $('#myModal').modal('show')
       axios.get(url).then(response =>(
+
         this.des=response.data.flavor_text_entries,
         this.colores=response.data.color.name
       ))
@@ -38,8 +39,6 @@ var app2=new Vue({
     }
   }
 })
-
-
 var buscar=new Vue({
   el:"#buscador",
   data:{
