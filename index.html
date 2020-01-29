@@ -5,18 +5,7 @@
     <title>Pokemon</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
-  <style media="screen">
-    .jumbotron{
-      text-align: center;
-    }
-    .colores_habilidades{
-      width: 80px;
-      color: white;
-      text-align: center;
-      border-radius: 7px;
-      opacity: 0.7;
-    }
-  </style>
+  <link rel="stylesheet" href="css/app.css">
   <body>
 <div class="container">
   <div class="row"  style="text-align:center;">
@@ -32,12 +21,22 @@
     <div class="row">
       <div id="app" class="row">
         <div  v-for="t in total" class="col-md-4">
-          <a v-on:click="funt_modal(t.entry_number,t.pokemon_species.url)">
-            <div class="jumbotron">
-                <img width="180px" v-bind:src="imagen+t.entry_number+'.png'" alt="">
-                <h3>{{t.pokemon_species.name}}</h3>
-            </div>
-          </a>
+          <div v-if="t.pokemon_species.name.indexOf(palabrabuscar)>=0">
+            <a v-on:click="funt_modal(t.entry_number,t.pokemon_species.url)">
+              <div class="jumbotron">
+                  <img width="180px" v-bind:src="imagen+t.entry_number+'.png'" alt="">
+                  <h3>{{t.pokemon_species.name}}</h3>
+              </div>
+            </a>
+          </div>
+          <div v-if="palabrabuscar==null">
+            <a v-on:click="funt_modal(t.entry_number,t.pokemon_species.url)">
+              <div class="jumbotron">
+                  <img width="180px" v-bind:src="imagen+t.entry_number+'.png'" alt="">
+                  <h3>{{t.pokemon_species.name}}</h3>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>

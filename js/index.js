@@ -2,7 +2,8 @@ var app=new Vue({
   el:"#app",
   data:{
     total:null,
-    imagen:"https://pokeres.bastionbot.org/images/pokemon/"
+    imagen:"https://pokeres.bastionbot.org/images/pokemon/",
+    palabrabuscar:null
   },
   mounted(){
     axios.get("https://pokeapi.co/api/v2/pokedex/2/")
@@ -42,19 +43,12 @@ var app2=new Vue({
 var buscar=new Vue({
   el:"#buscador",
   data:{
-    pokemones:null
+    pokemones:[],
+    acumular:null
   },
   methods:{
     addEvent: function({ type, target }){
-      console.log(target.value)
-      axios.get("https://pokeapi.co/api/v2/pokedex/2/")
-      .then(response =>(
-        $.each(response.data.pokemon_entries, function( key, value ) {
-          if (value.pokemon_species.name.indexOf(target.value)>=0) {
-              this.pokemones=value
-          }
-        })
-      ))
+      app.palabrabuscar=target.value
     }
   }
 })

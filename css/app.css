@@ -1,0 +1,10 @@
+.jumbotron{
+  text-align: center;
+}
+.colores_habilidades{
+  width: 80px;
+  color: white;
+  text-align: center;
+  border-radius: 7px;
+  opacity: 0.7;
+}
