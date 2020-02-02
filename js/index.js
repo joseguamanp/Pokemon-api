@@ -1,6 +1,7 @@
 var app=new Vue({
   el:"#app",
   data:{
+    itemsPerRow: 3,
     total:null,
     imagen:"https://pokeres.bastionbot.org/images/pokemon/",
     palabrabuscar:null
@@ -14,6 +15,9 @@ var app=new Vue({
   methods:{
     funt_modal: function(id,url){
       app2.modal_descripcion(id,url,this.imagen)
+    },
+    datos:function(info){
+      return Array.from(Array(Math.ceil(this.total.length / this.itemsPerRow)).keys())
     }
   }
 })

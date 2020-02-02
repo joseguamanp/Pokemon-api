@@ -18,18 +18,18 @@
   <div class="row" id="buscador">
     <input class="form-control" placeholder="buscar pokemon..." @input="addEvent" @change="addEvent">
   </div><br>
-    <div class="row">
-      <div id="app" class="row">
-        <div  v-for="t in total" class="col-md-4">
-          <div v-if="t.pokemon_species.name.indexOf(palabrabuscar)>=0">
-            <a v-on:click="funt_modal(t.entry_number,t.pokemon_species.url)">
-              <div class="jumbotron">
-                  <img width="180px" v-bind:src="imagen+t.entry_number+'.png'" alt="">
-                  <h3>{{t.pokemon_species.name}}</h3>
-              </div>
-            </a>
+    <div>
+      <div id="app">
+        <div  v-for="(group, i) in datos(total)" class="row">
+          <div class="col-md-4"  v-for="t in total.slice(i * itemsPerRow, (i + 1) * itemsPerRow)" v-if="t.pokemon_species.name.indexOf(palabrabuscar)>=0">
+              <a v-on:click="funt_modal(t.entry_number,t.pokemon_species.url)">
+                <div class="jumbotron">
+                    <img width="180px" v-bind:src="imagen+t.entry_number+'.png'" alt="">
+                    <h3>{{t.pokemon_species.name}}</h3>
+                </div>
+              </a>
           </div>
-          <div v-if="palabrabuscar==null">
+          <div class="col-md-4"  v-for="t in total.slice(i * itemsPerRow, (i + 1) * itemsPerRow)" v-if="palabrabuscar==null">
             <a v-on:click="funt_modal(t.entry_number,t.pokemon_species.url)">
               <div class="jumbotron">
                   <img width="180px" v-bind:src="imagen+t.entry_number+'.png'" alt="">
